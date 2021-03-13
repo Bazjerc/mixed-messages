@@ -10,4 +10,8 @@ const trainingPlan = {
   motivationMessage: ['go hard or go home', 'your body will thank you']
 };
 
+// generates random index to pick an option for message part
+function generateIndex(component) {
+  return Math.floor(Math.random() * component.length);
+}
 
