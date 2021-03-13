@@ -15,3 +15,19 @@ function generateIndex(component) {
   return Math.floor(Math.random() * component.length);
 }
 
+
+function createMessage() {
+  const generatedMessage = [userName];
+  const messageOrder = ['dayOfWeek', 'timeOfDay', 'bodyPart', 'weight', 'reason', 'motivationMessage'];
+  for (let i = 0; i < messageOrder.length; i++) {
+    const messagePart = messageOrder[i];
+    const randomIndex = generateIndex(trainingPlan[messagePart]);
+    switch (messagePart) {
+      case 'dayOfWeek':
+        generatedMessage.push(`, your next training should be on ${}`)
+    }
+
+  }
+  
+}
+
