@@ -20,8 +20,7 @@ function createMessage() {
   const generatedMessage = [userName];
   const messageOrder = ['dayOfWeek', 'timeOfDay', 'bodyPart', 'weight', 'reason', 'motivationMessage']; // specifies order of message components 
   // 
-  for (let i = 0; i < messageOrder.length; i++) {
-    const component = messageOrder[i];
+  for (let component of messageOrder) {
     const idx = generateIndex(trainingPlan[component]);
     switch (component) { // pushes part of the message into generatedMessage array depending on component order
       case 'dayOfWeek':
