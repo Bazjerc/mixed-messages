@@ -15,19 +15,38 @@ function generateIndex(component) {
   return Math.floor(Math.random() * component.length);
 }
 
-
+// generates and returns the random message
 function createMessage() {
   const generatedMessage = [userName];
-  const messageOrder = ['dayOfWeek', 'timeOfDay', 'bodyPart', 'weight', 'reason', 'motivationMessage'];
+  const messageOrder = ['dayOfWeek', 'timeOfDay', 'bodyPart', 'weight', 'reason', 'motivationMessage']; // specifies order of message components 
+  // 
   for (let i = 0; i < messageOrder.length; i++) {
-    const messagePart = messageOrder[i];
-    const randomIndex = generateIndex(trainingPlan[messagePart]);
-    switch (messagePart) {
+    const component = messageOrder[i];
+    const idx = generateIndex(trainingPlan[component]);
+    switch (component) { // pushes part of the message into generatedMessage array depending on component order
       case 'dayOfWeek':
-        generatedMessage.push(`, your next training should be on ${}`)
+        generatedMessage.push(`, your next training should be on ${trainingPlan[component][idx]} `);
+        break;
+      case 'timeOfDay':
+        generatedMessage.push(`at ${trainingPlan[component][idx]}. `);
+        break;
+      case 'bodyPart':
+        generatedMessage.push(`You should train your ${trainingPlan[component][idx]} `);
+        break;
+      case 'weight':
+        generatedMessage.push(`and use ${trainingPlan[component][idx]} weights `);
+        break;
+      case 'reason':
+        generatedMessage.push(`because you have to ${trainingPlan[component][idx]}. `);
+        break;
+      case 'motivationMessage':
+        generatedMessage.push(`Remember, ${trainingPlan[component][idx]}.`);
+        break;
     }
-
   }
-  
+  return generatedMessage.join('');
 }
 
+const newMessage = createMessage();
+
+console.log(newMessage);
